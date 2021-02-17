@@ -1,0 +1,89 @@
+[
+  {
+    "name": "Play",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "VTzsr",
+    "actions": [
+      {
+        "condition": "0",
+        "comparison": "0",
+        "value": "1",
+        "iftrue": "2",
+        "iftrueVal": "9",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "name": "Check Parameters"
+      },
+      {
+        "info": "1",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "para",
+        "name": "Store Command Params"
+      },
+      {
+        "behavior": "0",
+        "interpretation": "1",
+        "code": "const scrapeYt = require(\"scrape-yt\");\nscrapeYt.search(`${tempVars(\"para\")}`, {\n    type: \"video\"\n}).then(videos => {\n    console.log(videos[0]);\n\n  Actions.storeValue(videos[0].id, 1, \"url1\", cache);\n});\n",
+        "storage": "0",
+        "varName": "",
+        "name": "Run Script"
+      },
+      {
+        "time": "2",
+        "measurement": "1",
+        "name": "Wait"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "name": "Join Voice Channel"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": ":white_check_mark: Playing `${tempVars(\"para\")}` now. :white_check_mark:",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      },
+      {
+        "url": "https://youtube.com/watch?v=${tempVars(\"url1\")}",
+        "seek": "0",
+        "volume": "",
+        "passes": "1",
+        "bitrate": "",
+        "type": "0",
+        "name": "Play YouTube Video"
+      },
+      { "name": "End Action Sequence" },
+      {
+        "info": "0",
+        "infoIndex": "1",
+        "storage": "1",
+        "varName": "url",
+        "name": "Store Command Params"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "name": "Join Voice Channel"
+      },
+      {
+        "url": "${tempVars(\"url\")}",
+        "seek": "0",
+        "volume": "",
+        "passes": "1",
+        "bitrate": "",
+        "type": "0",
+        "name": "Play YouTube Video"
+      },
+      {
+        "channel": "0",
+        "varName": "",
+        "message": ":white_check_mark: Playing `${tempVars(\"url\")}` now. :white_check_mark:",
+        "storage": "0",
+        "varName2": "",
+        "name": "Send Message"
+      }
